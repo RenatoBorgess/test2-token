@@ -2,10 +2,7 @@ package com.test.Token2.DAO;
 
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +31,30 @@ public class ParentDAO {
 
         return parents;
     }
+    public Integer countChildrenForMother(String name) {
+
+        int childCount = 0;
+        String query = "SELECT COUNT(*) AS ChildCount " +
+                "FROM CHILD " +
+                "WHERE MOTHER_ID = (SELECT Id FROM PARENT WHERE Name = ?)";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    childCount = resultSet.getInt("ChildCount");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return childCount;
+    }
+
 
 }
 
