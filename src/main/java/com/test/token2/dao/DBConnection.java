@@ -1,4 +1,4 @@
-package com.test.Token2.DAO;
+package com.test.token2.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

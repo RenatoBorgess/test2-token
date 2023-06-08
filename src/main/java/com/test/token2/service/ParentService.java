@@ -1,7 +1,7 @@
-package com.test.Token2;
+package com.test.token2.service;
 
-import com.test.Token2.DAO.Parent;
-import com.test.Token2.DAO.ParentDAO;
+import com.test.token2.dao.Parent;
+import com.test.token2.dao.ParentDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.test.Token2.DAO;
+package com.test.token2.dao;
 
 import org.springframework.stereotype.Repository;
 

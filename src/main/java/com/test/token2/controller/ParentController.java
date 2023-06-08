@@ -1,6 +1,7 @@
-package com.test.Token2;
+package com.test.token2.controller;
 
-import com.test.Token2.DAO.Parent;
+import com.test.token2.service.ParentService;
+import com.test.token2.dao.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class parentController {
+public class ParentController {
 
     @Autowired
     ParentService parentService;
