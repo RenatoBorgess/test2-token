@@ -18,11 +18,11 @@ public class parentController {
     public List<Parent> getAllFathersNames() {
         return parentService.getFathersNames();
     }
-    @GetMapping("/countChildren/{name}")
+    @GetMapping("/mothers/{name}/countChildren/")
     public Integer countChildrenByMother(@PathVariable String name) {
         return parentService.countChildrenByMother(name);
     }
-    @GetMapping("/countChildren/{name}")
+    @GetMapping("/fathers/{name}/countChildren/")
     public Integer countChildrenByFather(@PathVariable String name) {
         return parentService.countChildrenByFather(name);
     }
