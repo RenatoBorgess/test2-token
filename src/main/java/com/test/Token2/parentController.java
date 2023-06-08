@@ -26,4 +26,8 @@ public class parentController {
     public Integer countChildrenByFather(@PathVariable String name) {
         return parentService.countChildrenByFather(name);
     }
+    @GetMapping("/fathers/multipleChildren")
+    public List<String> fathersWithMultipleChildren(){
+        return parentService.getFathersWithMultipleChildren();
+    }
 }

@@ -22,4 +22,7 @@ public class ParentService {
     public Integer countChildrenByFather(String name) {
         return parentDAO.countChildrenbyFather(name);
     }
+    public List<String> getFathersWithMultipleChildren(){
+        return parentDAO.getFathersWithMultipleChildren();
+    }
 }

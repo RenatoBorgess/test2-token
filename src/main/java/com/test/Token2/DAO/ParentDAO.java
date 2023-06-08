@@ -78,6 +78,31 @@ public class ParentDAO {
 
         return childCount;
     }
+    public List<String> getFathersWithMultipleChildren() {
+        List<String> fathers = new ArrayList<>();
+
+        try (Connection connection = DBConnection.getConnection()) {
+            String query = "SELECT p.Name " +
+                    "FROM PARENT p " +
+                    "JOIN CHILD c ON p.Id = c.FATHER_ID " +
+                    "WHERE c.FATHER_ID IS NOT NULL " +
+                    "GROUP BY p.Name " +
+                    "HAVING COUNT(*) > 1";
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("Name");
+                fathers.add(name);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fathers;
+    }
 
 
 }
