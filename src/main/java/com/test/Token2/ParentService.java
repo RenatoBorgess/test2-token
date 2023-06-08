@@ -16,6 +16,10 @@ public class ParentService {
         return parentDAO.getFathersNames();
     }
     public Integer countChildrenByMother(String name){
-        return parentDAO.countChildrenForMother(name);
+        return parentDAO.countChildrenByMother(name);
+    }
+
+    public Integer countChildrenByFather(String name) {
+        return parentDAO.countChildrenbyFather(name);
     }
 }

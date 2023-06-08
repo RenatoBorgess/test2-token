@@ -31,7 +31,7 @@ public class ParentDAO {
 
         return parents;
     }
-    public Integer countChildrenForMother(String name) {
+    public Integer countChildrenByMother(String name) {
 
         int childCount = 0;
         String query = "SELECT COUNT(*) AS ChildCount " +
@@ -51,6 +51,30 @@ public class ParentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return childCount;
+    }
+    public Integer countChildrenbyFather(String name) {
+
+        int childCount = 0;
+        String query = "SELECT COUNT(*) AS ChildCount " +
+                "FROM CHILD " +
+                "WHERE FATHER_ID = (SELECT Id FROM PARENT WHERE Name = ?)";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    childCount = resultSet.getInt("ChildCount");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         return childCount;
     }
